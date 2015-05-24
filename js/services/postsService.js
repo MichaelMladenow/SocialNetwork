@@ -4,7 +4,7 @@ app.factory('postsService',
     function ($http, baseServiceUrl, authService) {
         return {
             createNewPost: function (postData, success, error) {
-                postData['username'] = '';
+                postData['username'] = authService.getCurrentUser().userName;
                 var request = {
                     method: 'POST',
                     url: baseServiceUrl + '/api/posts',

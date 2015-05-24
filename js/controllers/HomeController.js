@@ -7,7 +7,7 @@ app.controller('HomeController',
           'PageSize' : pageSize
       };
 
-      $scope.reloadAds = function() {
+      $scope.reloadPosts = function() {
           postsService.getPosts(
               $scope.adsParams,
               function success(data) {
@@ -20,6 +20,6 @@ app.controller('HomeController',
           );
       };
 
-      $scope.reloadAds();
+      $scope.reloadPosts();
    }
 );

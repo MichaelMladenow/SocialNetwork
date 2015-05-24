@@ -6,30 +6,41 @@ app.factory('userService',
             createNewPost: function (adData, success, error) {
                 var request = {
                     method: 'POST',
-                    url: baseServiceUrl + '/api/users/ads',
+                    url: baseServiceUrl + '/api/posts',
                     headers: authService.getAuthHeaders(),
                     data: adData
                 };
                 $http(request).success(success).error(error);
             },
-			
-            getUserAds: function (params, success, error) {
+
+            getPendingRequests: function (success, error) {
                 var request = {
                     method: 'GET',
-                    url: baseServiceUrl + '/api/users/ads',
+                    url: baseServiceUrl + '/api/me/requests',
                     headers: authService.getAuthHeaders(),
-                    params: params
                 };
                 $http(request).success(success).error(error);
             },
 
-            deactivateAd: function (id, success, error) {
-				// TODO
+            acceptPendingRequest: function (requestID, success, error) {
+                var request = {
+                    method: 'PUT',
+                    url: baseServiceUrl + '/api/me/requests' + requestID + '?status=approved',
+                    headers: authService.getAuthHeaders(),
+                };
+                $http(request).success(success).error(error);
             },
 
-            publishAgainAd: function (id, success, error) {
-				// TODO
-            }
+            rejectPendingRequest: function (requestID, success, error) {
+                var request = {
+                    method: 'PUT',
+                    url: baseServiceUrl + '/api/me/requests' + requestID + '?status=rejected',
+                    headers: authService.getAuthHeaders(),
+                };
+                $http(request).success(success).error(error);
+            },
+
+
         }
     }
 );

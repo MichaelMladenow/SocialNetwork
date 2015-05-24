@@ -21,10 +21,15 @@ app.config(function ($routeProvider) {
         templateUrl: 'templates/register.html',
         controller: 'RegisterController'
     });
-	
-	$routeProvider.when('/user/posts/publish', {
+
+    $routeProvider.when('/user/posts/publish', {
         templateUrl: 'templates/user/post.html',
         controller: 'PostController'
+    });
+
+    $routeProvider.when('/user/friends', {
+        templateUrl: 'templates/user/friends.html',
+        controller: 'UserController'
     });
 
     $routeProvider.otherwise(
@@ -38,6 +43,7 @@ app.run(function ($rootScope, $location, authService) {
     if ($location.path().indexOf("/user/") != -1 && !authService.isLoggedIn()) {
       // Authorization check: anonymous site visitors cannot access user routes
       $location.path("/");
+        console.log('Unauthorized to go there :(');
     }
   });
 });

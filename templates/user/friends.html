@@ -1,0 +1,7 @@
+<ul class="friends-requests">
+    <li ng-repeat="request in friendRequests" data-id="{{ request.user.id }}">
+        <p class="emphasize">From <strong>{{ request.user.name }}</strong></p>
+        <button ng-click="acceptFriend({{ request.id }})">Accept friend request</button>
+        <button>Decline friend request</button>
+    </li>
+</ul>

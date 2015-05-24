@@ -1,19 +1,17 @@
 'use strict';
 
-app.controller('HomeController',
-   function ($scope, postsService, notifyService) {
+app.controller('PostController',
+   function ($scope, postsService, notifyService, $location) {
        $scope.publishPost = function(adData) {
-           postsServuce.createNewPost(adData,
+           postsService.createNewPost(adData,
                function success() {
-                   notifyService.showInfo("Advertisement submitted for approval. Once approved, it will be published.");
-                   $location.path("/user/ads");
+                   notifyService.showInfo("Post succesfully published!");
+                   $location.path("/");
                },
                function error(err) {
-                   notifyService.showError("Publish ad failed", err);
+                   notifyService.showError("Publishing post failed.", err);
                }
            );
        };
-
-      $scope.reloadAds();
    }
 );

@@ -6,15 +6,14 @@
 
     <div class="form-group">
         <div class="input-group">
-            <label for="username" class="input-group-addon glyphicon glyphicon-user"></label>
-            <input type="textarea" id="username" ng-model="postData.postContent" class="form-control" placeholder="Post Content" required/>
+            <label for="content" class="input-group-addon glyphicon glyphicon-user"></label>
+            <input type="textarea" id="content" ng-model="postData.postContent" class="form-control" placeholder="Post Content" required/>
         </div>
     </div>
 
-
     <div class="form-group">
         <div class="input-group">
-            <button type="button" class="btn btn-primary" ng-click="createNewPost(postData)">Post</button>
+            <button type="button" class="btn btn-primary" ng-click="publishPost(postData)">Post</button>
         </div>
     </div>
 </form>
