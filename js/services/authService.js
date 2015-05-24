@@ -6,7 +6,7 @@ app.factory('authService',
             login: function(userData, success, error) {
                 var request = {
                     method: 'POST',
-                    url: baseServiceUrl + '/api/user/login',
+                    url: baseServiceUrl + '/api/users/Login',
                     data: userData
                 };
                 $http(request).success(function(data) {
@@ -18,7 +18,7 @@ app.factory('authService',
             register: function(userData, success, error) {
                 var request = {
                     method: 'POST',
-                    url: baseServiceUrl + '/api/user/register',
+                    url: baseServiceUrl + '/api/users/register',
                     data: userData
                 };
                 $http(request).success(function(data) {
