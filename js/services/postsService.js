@@ -4,6 +4,7 @@ app.factory('postsService',
     function ($http, baseServiceUrl, authService) {
         return {
             createNewPost: function (postData, success, error) {
+                postData['username'] = '';
                 var request = {
                     method: 'POST',
                     url: baseServiceUrl + '/api/posts',

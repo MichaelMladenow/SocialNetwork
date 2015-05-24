@@ -12,7 +12,7 @@ app.controller('HomeController',
               $scope.adsParams,
               function success(data) {
                   $scope.ads = data;
-                  console.log(data);
+                  // console.log(data);
               },
               function error(err) {
                   notifyService.showError("Cannot load posts", err);
