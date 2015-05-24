@@ -1,1 +1,9 @@
-/* TODO: Make friends bar */
+<!-- Navigation box for anonymous site visitors -->
+<div ng-if="authService.isAnonymous()">
+    <h2>Authentication</h2>
+    <ul class="sidebar-menu">
+        <li><a href="#/login">Login</a></li>
+        <li><a href="#/register">Register</a></li>
+    </ul>
+</div>
+
