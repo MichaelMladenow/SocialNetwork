@@ -5,3 +5,17 @@
   border-top: 1px solid rgb(150, 150, 150);
   border-bottom: 1px solid rgb(150, 150, 150);
 }
+
+div.friend-requests-container {
+  list-style-type: none;
+  border: 1px solid;
+  border-radius: 35px;
+  padding: 45px;
+}
+
+ul.friends-requests > li {
+  border-bottom: 1px dashed;
+  width: 50%;
+  margin: 25px auto;
+  text-align: center;
+}

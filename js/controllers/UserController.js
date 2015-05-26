@@ -16,7 +16,7 @@ app.controller('UserController',
         $scope.acceptFriend = function(requestId) {
             userService.acceptPendingRequest(requestId, function success(data) {
                     notifyService.showInfo("Friendship accepted!");
-                    $location.path('/friends');
+                    $scope.getPendingRequests();
                 },
                 function error(err) {})
         };
@@ -24,7 +24,7 @@ app.controller('UserController',
         $scope.rejectFriend = function(requestId) {
             userService.rejectPendingRequest(requestId, function success(data) {
                     notifyService.showInfo("Friendship declined!");
-                    $location.path('/friends');
+                    $scope.getPendingRequests();
                 },
                 function error(err) {
                     notifyService.showError("Could not reject friend.", err);

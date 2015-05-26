@@ -2,8 +2,8 @@
 	<ul class="friends-requests" ng-if="friendRequests">
 	    <li ng-repeat="request in friendRequests" data-id="{{ request.user.id }}">
 	        <p class="emphasize">From <strong><a href="#/user/{{ request.user.username }}">{{ request.user.name }}</a></strong></p>
-	        <button ng-click="acceptFriend(request.id)">Accept friend request</button>
-	        <button ng-click="rejectFriend(request.id)">Decline friend request</button>
+	        <button class="btn btn-success" ng-click="acceptFriend(request.id)">Accept friend request</button>
+	        <button class="btn btn-danger" ng-click="rejectFriend(request.id)">Decline friend request</button>
 	    </li>
 	</ul>
 	<p ng-if="friendRequests.length < 1">No pending friendship requests.</p>
