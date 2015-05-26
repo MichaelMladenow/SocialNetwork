@@ -8,3 +8,20 @@
 	</ul>
 	<p ng-if="friendRequests.length < 1">No pending friendship requests.</p>
 </div>
+
+<div class="friendsContainer" ng-if="ownFriendsList.length > 0">
+	<h3 class="caption">Filter by name:</h3>
+	<input id="friendsNameFilter" type="text" ng-model="ownFriendsSearch.name" placeholder="Search Name" class="form-control">
+	<table class="table" >
+		<tr class="caption row">
+			<th>Name</th>
+			<th>Gender</th>
+		</tr>
+		<tr class="row friendRow" ng-repeat="friend in ownFriendsList | filter:ownFriendsSearch">
+			<td><a href="#/user/{{ friend.username }}" >{{ friend.name }}</a></td>
+			<td>{{ friend.gender == 0 ? 'Male' : 'Female' }}</td>
+		</tr>
+	</table>
+</div>
+
+<div ng-if="ownFriendsList.length < 1"><h2>No friends to show.</h2></div>

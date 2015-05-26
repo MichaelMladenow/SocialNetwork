@@ -38,3 +38,8 @@ div.userContainer div.img img {
   width: 50%;
   margin: 0 auto;
 }
+
+input#friendsNameFilter {
+	width: 30%;
+	margin: 30px;
+}

@@ -15,7 +15,7 @@ app.controller('HomeController',
         function success(data) {
           $scope.posts = data;
           $scope.postsParams['LastPostId'] = fromPostId;
-          $scope.postsParams['NextPostId'] = data[data.length - 1].id;
+          $scope.postsParams['NextPostId'] = data[data.length - 1] ? data[data.length - 1].id : '';
           console.log($scope.postsParams);
         },
         function error(err) {
