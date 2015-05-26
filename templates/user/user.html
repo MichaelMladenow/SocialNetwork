@@ -4,5 +4,4 @@
 	<div class="cover img cover-img" style="background-image: url('{{ currentUserData.coverImageData? currentUserData.coverImageData : 'http://masspictures.net/wp-content/uploads/2014/05/nocover-320x180-300x168.gif' }}');"></div>
 	<div class="img" class="thumbnail"><img src="{{ currentUserData.profileImageData ? currentUserData.profileImageData : 'http://farm3.staticflickr.com/2428/3887066231_56e5876522_z.jpg' }}" /> </div>
 	<button class="btn btn-success" ng-click="sendFriendRequest(currentUserData.username)" ng-if="!currentUserData.hasPendingRequest && !currentUserData.isFriend">Send Friendship Request</button>
-
 </div>

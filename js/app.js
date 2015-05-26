@@ -1,5 +1,10 @@
 'use strict';
 
+
+$(document).on("click", '.well.comment', function() {
+    $(this).children().slideToggle();
+});
+
 var app = angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap.pagination']);
 
 app.constant('baseServiceUrl', 'http://softuni-social-network.azurewebsites.net');

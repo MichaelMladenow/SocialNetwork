@@ -1,9 +1,9 @@
 'use strict';
 
 app.factory('postsService',
-    function ($http, baseServiceUrl, authService) {
+    function($http, baseServiceUrl, authService) {
         return {
-            createNewPost: function (postData, success, error) {
+            createNewPost: function(postData, success, error) {
                 postData['username'] = authService.getCurrentUser().userName;
                 var request = {
                     method: 'POST',
@@ -14,12 +14,22 @@ app.factory('postsService',
                 $http(request).success(success).error(error);
             },
 
-            getPosts: function (params, success, error) {
+            getPosts: function(params, success, error) {
                 var request = {
                     method: 'GET',
                     url: baseServiceUrl + '/api/me/feed',
                     headers: authService.getAuthHeaders(),
                     params: params
+                };
+                $http(request).success(success).error(error);
+            },
+
+            postComment: function(postId, commentData, success, error) {
+                var request = {
+                    method: 'POST',
+                    url: baseServiceUrl + '/api/posts/' + postId + '/comments',
+                    headers: authService.getAuthHeaders(),
+                    data: { commentContent : commentData }
                 };
                 $http(request).success(success).error(error);
             },

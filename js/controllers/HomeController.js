@@ -14,9 +14,9 @@ app.controller('HomeController',
         $scope.postsParams,
         function success(data) {
           $scope.posts = data;
+          console.log(data);
           $scope.postsParams['LastPostId'] = fromPostId;
           $scope.postsParams['NextPostId'] = data[data.length - 1] ? data[data.length - 1].id : '';
-          console.log($scope.postsParams);
         },
         function error(err) {
           notifyService.showError(err.message == "Session token expired or not valid." ? "Please log in in order to see posts" : "Cannot load posts");
@@ -24,6 +24,17 @@ app.controller('HomeController',
       );
     };
 
+    $scope.addPostComment = function(postId, commentContent) {
+      postsService.postComment(postId, commentContent, function success(data) {
+        notifyService.showInfo('Comment posted succesfully!');
+        $scope.fetchPosts();
+      }, function error(data) {
+        notifyService.showError(data.message);
+      })
+
+    };
+
     $scope.fetchPosts();
+
   }
 );

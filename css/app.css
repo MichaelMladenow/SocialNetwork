@@ -43,3 +43,14 @@ input#friendsNameFilter {
 	width: 30%;
 	margin: 30px;
 }
+
+div.addComment input[type=text] {
+  width: 40%;
+  float: left;
+  margin: 0 10px;
+}
+
+.well.comment {
+  width: 50%;
+  margin: 10px 10px;
+}

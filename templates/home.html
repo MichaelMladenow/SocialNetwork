@@ -10,7 +10,21 @@
             <h1><strong><a href="#/user/{{ post.author.username }}">{{post.author.name}}</a></strong> posted on <strong><a href="#/user/{{ post.wallOwner.username }}">{{ post.wallOwner.name }}'s</a></strong> wall.</h1>
             <div><strong>Date:</strong> {{ post.date | date:'dd-MMM-yyyy' }}</div>
             <blockquote><p>{{ post.postContent }}</p></blockquote>
+            <div class="addComment">
+                <input type="text" ng-model="model.content" class="form-control comment-input" placeholder="Comment on this post">
+                <button class="btn btn-primary" ng-click="addPostComment(post.id, model.content)">Post comment!</button>
+            </div>
             <div class="separator"></div>
+            <div class="well comment" ng-if="post.comments.length > 0">Comments:
+                <div style="display: none;" class="panel panel-default" ng-repeat="comment in post.comments">
+                    <div class="panel-heading">
+                        <strong>By: </strong>{{ comment.author.name }}
+                    </div>
+                    <div class="panel-body">
+                        {{ comment.commentContent }}
+                    </div>
+                </div>
+            </div>
         </li>
     </ul>
 </div>
