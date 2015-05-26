@@ -2,8 +2,14 @@
 
 // The AppController holds the presentation logic for the entire app (common all screens)
 app.controller('AppController',
-	function($scope, $location, userService, authService, notifyService) {
+	function($scope, $location, $timeout, userService, authService, notifyService) {
 		$scope.authService = authService;
+
+		$scope.logout = function() {
+			authService.logout();
+			notifyService.showInfo("Logout successful");
+			$location.path('/');
+		};
 
 		function updateFriendRequests() {
 			userService.getPendingRequests(function success(data) {
@@ -18,12 +24,6 @@ app.controller('AppController',
 
 		// Update the badge 'NEW', 
 		// TODO: Improve calling on this func
-		updateFriendRequests();
-
-		$scope.logout = function() {
-			authService.logout();
-			notifyService.showInfo("Logout successful");
-			$location.path('/');
-		};
+		$timeout(updateFriendRequests, 5000);
 	}
 );

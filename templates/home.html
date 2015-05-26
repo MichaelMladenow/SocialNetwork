@@ -1,17 +1,24 @@
-<pagination total-items="posts.numItems" ng-model="posts"
-  items-per-page="postParams.pageSize" ng-change="reloadPosts()"
-  max-size="9" boundary-links="true">
-</pagination>
+<div class="news container" ng-if="authService.isLoggedIn()">
 
-<ul class="posts">
-    <li ng-repeat="post in posts" class="box" data-id="{{post.id}}">
-        <h1><strong><a href="#/user/{{ post.author.username }}">{{post.author.name}}</a></strong> posted on <strong><a href="#/user/{{ post.wallOwner.username }}">{{ post.wallOwner.name }}'s</a></strong> wall.</h1>
-        <div><strong>Date:</strong> {{ post.date | date:'dd-MMM-yyyy' }}</div>
-        <blockquote><p>{{ post.postContent }}</p></blockquote>
-    </li>
-</ul>
+    <ul class="pager">
+        <li ng-click="fetchPosts(postParams['LastPostId'])"><a>Previous Page</a></li>
+        <li ng-click="fetchPosts(postParams['NextPostId'])"><a>Next Page</a></li>
+    </ul>
 
+    <ul class="posts">
+        <li ng-repeat="post in posts" class="box" data-id="{{post.id}}">
+            <h1><strong><a href="#/user/{{ post.author.username }}">{{post.author.name}}</a></strong> posted on <strong><a href="#/user/{{ post.wallOwner.username }}">{{ post.wallOwner.name }}'s</a></strong> wall.</h1>
+            <div><strong>Date:</strong> {{ post.date | date:'dd-MMM-yyyy' }}</div>
+            <blockquote><p>{{ post.postContent }}</p></blockquote>
+            <div class="separator"></div>
+        </li>
+    </ul>
+</div>
 
 <div ng-if="posts.length == 0" class="box no-data">
     No posts found.
+</div>
+
+<div ng-if="authService.isAnonymous()">
+    Please login in order to see posts.
 </div>

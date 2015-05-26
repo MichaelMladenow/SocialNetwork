@@ -31,24 +31,8 @@ app.controller('UserController',
                 })
         };
 
-        function updateFriendRequests() {
-            userService.getPendingRequests(function success(data) {
-                    $scope.friendRequestsCount = data.length;
-                    console.log('Friends badge updated. New: ' + data.length);
-                    //console.log(data.length);
-                },
-                function error(err) {
-                    $scope.friendRequestsCount = 0;
-                })
-        }
-
-        // Update the badge 'NEW', 
-        // TODO: Improve calling on this func
-        $timeout(updateFriendRequests, 10000);
-
         // On loading user controller fetches friend requests
         // TODO: Maybe add it on load into the partial
         $scope.getFriendRequests();
-
     }
 );
