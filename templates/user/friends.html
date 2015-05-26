@@ -1,3 +1,4 @@
+<div class="friend-requests-container container-fluid" ng-if="friendRequests">
 <ul class="friends-requests">
     <li ng-repeat="request in friendRequests" data-id="{{ request.user.id }}">
         <p class="emphasize">From <strong>{{ request.user.name }}</strong></p>
@@ -5,3 +6,4 @@
         <button>Decline friend request</button>
     </li>
 </ul>
+</div>

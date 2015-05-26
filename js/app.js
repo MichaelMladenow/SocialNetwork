@@ -32,6 +32,11 @@ app.config(function ($routeProvider) {
         controller: 'UserController'
     });
 
+    $routeProvider.when('/user/:userName', {
+        templateUrl: 'templates/user/user.html',
+        controller: 'UserBrowserController'
+    });
+
     $routeProvider.otherwise(
         { redirectTo: '/' }
     );

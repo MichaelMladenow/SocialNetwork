@@ -1,0 +1,6 @@
+<div class="userContainer" ng-if="currentUserData">
+	<h1>{{ currentUserData.name }}</h1>
+	<div class="gender"><strong>Gender:</strong> {{ currentUserData.gender == '0' ? 'Male' : 'Female'}} </div>
+	<div class="img"><img src="{{ currentUserData.profileImageData }}" /> </div>
+
+</div>

@@ -22,7 +22,6 @@ app.controller('UserController',
                 })
         };
 
-
         $scope.friendsRequests = $scope.getFriendRequests();
     }
 );

@@ -2,17 +2,16 @@
 
 app.controller('HomeController',
    function ($scope, postsService, notifyService, pageSize) {
-      $scope.adsParams = {
-          'StartPostId' : 1,
+      $scope.postsParams = {
+          'StartPostId' : '',
           'PageSize' : pageSize
       };
 
       $scope.reloadPosts = function() {
           postsService.getPosts(
-              $scope.adsParams,
+              $scope.postsParams,
               function success(data) {
-                  $scope.ads = data;
-                  // console.log(data);
+                  $scope.posts = data;
               },
               function error(err) {
                   notifyService.showError("Cannot load posts", err);
