@@ -22,10 +22,10 @@
                     <li><a href="#">Another action</a></li>
                     <li><a href="#">Something else here</a></li>
                     <li class="divider"></li>
-                    <li ng-click="logout()">Logout</li>
+                    <li ng-click="logout()"><a href="#">Logout</a></li>
                 </ul>
             </li>
-            <li><a href="#/user/friends">Friends</span></a>
+            <li><a href="#/user/friends">Friends <span class="badge" ng-if="friendRequestsCount > 0">{{ friendRequestsCount }}</span></span></a>
             </li>
         </ul>
     </div>

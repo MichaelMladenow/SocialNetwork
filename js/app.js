@@ -5,6 +5,8 @@ var app = angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap.paginati
 app.constant('baseServiceUrl', 'http://softuni-social-network.azurewebsites.net');
 app.constant('pageSize', 4);
 
+
+
 app.config(function ($routeProvider) {
 
     $routeProvider.when('/', {
@@ -43,12 +45,12 @@ app.config(function ($routeProvider) {
 
 });
 
-app.run(function ($rootScope, $location, authService) {
+app.run(function ($rootScope, $location, authService, notifyService) {
   $rootScope.$on('$locationChangeStart', function (event) {
     if ($location.path().indexOf("/user/") != -1 && !authService.isLoggedIn()) {
       // Authorization check: anonymous site visitors cannot access user routes
       $location.path("/");
-        console.log('Unauthorized to go there :(');
+        notifyService.showInfo('You must be logged in to go there.');
     }
   });
 });

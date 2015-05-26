@@ -1,9 +1,10 @@
-<div class="friend-requests-container container-fluid" ng-if="friendRequests">
-<ul class="friends-requests">
-    <li ng-repeat="request in friendRequests" data-id="{{ request.user.id }}">
-        <p class="emphasize">From <strong>{{ request.user.name }}</strong></p>
-        <button ng-click="acceptFriend({{ request.id }})">Accept friend request</button>
-        <button>Decline friend request</button>
-    </li>
-</ul>
+<div class="friend-requests-container container-fluid">
+	<ul class="friends-requests" ng-if="friendRequests">
+	    <li ng-repeat="request in friendRequests" data-id="{{ request.user.id }}">
+	        <p class="emphasize">From <strong><a href="#/user/{{ request.user.username }}">{{ request.user.name }}</a></strong></p>
+	        <button ng-click="acceptFriend(request.id)">Accept friend request</button>
+	        <button ng-click="rejectFriend(request.id)">Decline friend request</button>
+	    </li>
+	</ul>
+	<p ng-if="!friendRequests">No pending friendship requests.</p>
 </div>

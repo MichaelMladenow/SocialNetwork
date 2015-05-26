@@ -2,8 +2,8 @@
 
 app.controller('PostController',
    function ($scope, postsService, notifyService, $location) {
-       $scope.publishPost = function(adData) {
-           postsService.createNewPost(adData,
+       $scope.publishPost = function(postData) {
+           postsService.createNewPost(postData,
                function success() {
                    notifyService.showInfo("Post succesfully published!");
                    $location.path("/");

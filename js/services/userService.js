@@ -25,7 +25,7 @@ app.factory('userService',
             acceptPendingRequest: function (requestID, success, error) {
                 var request = {
                     method: 'PUT',
-                    url: baseServiceUrl + '/api/me/requests' + requestID + '?status=approved',
+                    url: baseServiceUrl + '/api/me/requests/' + requestID + '?status=approved',
                     headers: authService.getAuthHeaders(),
                 };
                 $http(request).success(success).error(error);
@@ -34,7 +34,7 @@ app.factory('userService',
             rejectPendingRequest: function (requestID, success, error) {
                 var request = {
                     method: 'PUT',
-                    url: baseServiceUrl + '/api/me/requests' + requestID + '?status=rejected',
+                    url: baseServiceUrl + '/api/me/requests/' + requestID + '?status=rejected',
                     headers: authService.getAuthHeaders(),
                 };
                 $http(request).success(success).error(error);
