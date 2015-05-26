@@ -1,9 +1,9 @@
 'use strict';
 
 app.factory('userService',
-    function ($http, baseServiceUrl, authService) {
+    function($http, baseServiceUrl, authService) {
         return {
-            createNewPost: function (adData, success, error) {
+            createNewPost: function(adData, success, error) {
                 var request = {
                     method: 'POST',
                     url: baseServiceUrl + '/api/posts',
@@ -13,7 +13,7 @@ app.factory('userService',
                 $http(request).success(success).error(error);
             },
 
-            getPendingRequests: function (success, error) {
+            getPendingRequests: function(success, error) {
                 var request = {
                     method: 'GET',
                     url: baseServiceUrl + '/api/me/requests',
@@ -22,7 +22,7 @@ app.factory('userService',
                 $http(request).success(success).error(error);
             },
 
-            acceptPendingRequest: function (requestID, success, error) {
+            acceptPendingRequest: function(requestID, success, error) {
                 var request = {
                     method: 'PUT',
                     url: baseServiceUrl + '/api/me/requests/' + requestID + '?status=approved',
@@ -31,7 +31,7 @@ app.factory('userService',
                 $http(request).success(success).error(error);
             },
 
-            rejectPendingRequest: function (requestID, success, error) {
+            rejectPendingRequest: function(requestID, success, error) {
                 var request = {
                     method: 'PUT',
                     url: baseServiceUrl + '/api/me/requests/' + requestID + '?status=rejected',
@@ -40,10 +40,19 @@ app.factory('userService',
                 $http(request).success(success).error(error);
             },
 
-            getUserDataByUsername: function (username, success, error) {
+            getUserDataByUsername: function(username, success, error) {
                 var request = {
                     method: 'GET',
                     url: baseServiceUrl + '/api/users/' + username,
+                    headers: authService.getAuthHeaders(),
+                };
+                $http(request).success(success).error(error);
+            },
+
+            requestFriendship: function(username, success, error) {
+                var request = {
+                    method: 'POST',
+                    url: baseServiceUrl + '/api/me/requests/' + username,
                     headers: authService.getAuthHeaders(),
                 };
                 $http(request).success(success).error(error);

@@ -7,7 +7,7 @@ app.constant('pageSize', 4);
 
 
 
-app.config(function ($routeProvider) {
+app.config(function($routeProvider) {
 
     $routeProvider.when('/', {
         templateUrl: 'templates/home.html',
@@ -39,18 +39,18 @@ app.config(function ($routeProvider) {
         controller: 'UserBrowserController'
     });
 
-    $routeProvider.otherwise(
-        { redirectTo: '/' }
-    );
+    $routeProvider.otherwise({
+        redirectTo: '/'
+    });
 
 });
 
-app.run(function ($rootScope, $location, authService, notifyService) {
-  $rootScope.$on('$locationChangeStart', function (event) {
-    if ($location.path().indexOf("/user/") != -1 && !authService.isLoggedIn()) {
-      // Authorization check: anonymous site visitors cannot access user routes
-      $location.path("/");
-        notifyService.showInfo('You must be logged in to go there.');
-    }
-  });
+app.run(function($rootScope, $location, authService, notifyService) {
+    $rootScope.$on('$locationChangeStart', function(event) {
+        if ($location.path().indexOf("/user/") != -1 && !authService.isLoggedIn()) {
+            // Authorization check: anonymous site visitors cannot access user routes
+            $location.path("/");
+            notifyService.showInfo('You must be logged in to go there.');
+        }
+    });
 });

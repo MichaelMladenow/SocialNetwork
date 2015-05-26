@@ -19,7 +19,7 @@ app.controller('HomeController',
           console.log($scope.postsParams);
         },
         function error(err) {
-          notifyService.showError("Cannot load posts", err);
+          notifyService.showError(err.message == "Session token expired or not valid." ? "Please log in in order to see posts" : "Cannot load posts");
         }
       );
     };
